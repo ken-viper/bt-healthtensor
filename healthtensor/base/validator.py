@@ -27,8 +27,8 @@ import bittensor as bt
 from typing import List
 from traceback import print_exception
 
-from healthcare.base.neuron import BaseNeuron
-from healthcare.dataset.extracter import download_dataset
+from healthtensor.base.neuron import BaseNeuron
+from healthtensor.dataset.extracter import download_dataset
 
 
 class BaseValidatorNeuron(BaseNeuron):

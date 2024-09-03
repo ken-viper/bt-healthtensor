@@ -26,10 +26,10 @@ import bittensor as bt
 from abc import ABC, abstractmethod
 
 # Sync calls set weights and also resyncs the metagraph.
-from healthcare.utils.config import check_config, add_args, config
-from healthcare.utils.misc import ttl_get_block
-from healthcare import __spec_version__ as spec_version
-from healthcare.utils.version import upgrade_version
+from healthtensor.utils.config import check_config, add_args, config
+from healthtensor.utils.misc import ttl_get_block
+from healthtensor import __spec_version__ as spec_version
+from healthtensor.utils.version import upgrade_version
 
 
 class BaseNeuron(ABC):

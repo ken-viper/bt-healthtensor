@@ -26,7 +26,7 @@ from contextlib import contextmanager
 from huggingface_hub import snapshot_download, HfApi
 from constants import BASE_DIR
 from typing import List
-from healthcare.utils.chain import Chain
+from healthtensor.utils.chain import Chain
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -56,7 +56,7 @@ async def download(
     Returns:
     - dict: {The path of the model on the system, Block of commitment used to calculate commit time, The repo id of the model on hugging face}
     """
-    local_dir = os.path.join(BASE_DIR, "healthcare/models/validator", str(uid))
+    local_dir = os.path.join(BASE_DIR, "healthtensor/models/validator", str(uid))
     response = {"local_dir" : local_dir, "block" : float('inf'), "repo_id" : ""}
     try:
         # Retrieve miner's latest metadata from the chain.
@@ -86,7 +86,7 @@ async def download(
         response["repo_id"] = repo_id
 
         # Download the model
-        cache_dir = os.path.join(BASE_DIR, "healthcare/models/validator/cache")
+        cache_dir = os.path.join(BASE_DIR, "healthtensor/models/validator/cache")
         with suppress_stdout_stderr():
             snapshot_download(repo_id = repo_id, revision = commit_hash, local_dir = local_dir, cache_dir = cache_dir)
         bt.logging.info(f"✅ Successfully downloaded the model of miner {uid}.")
@@ -127,7 +127,7 @@ def remove_models(
     """
     
     try:
-        local_dir = os.path.join(BASE_DIR, "healthcare/models/validator/cache")
+        local_dir = os.path.join(BASE_DIR, "healthtensor/models/validator/cache")
         shutil.rmtree(local_dir)
     except Exception as e:
         return

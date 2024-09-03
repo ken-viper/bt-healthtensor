@@ -58,11 +58,11 @@ def download_dataset() -> bool:
     
     # Download the dataset
     try:
-        local_dir = os.path.join(BASE_DIR, "healthcare/dataset/validator")
+        local_dir = os.path.join(BASE_DIR, "healthtensor/dataset/validator")
         with suppress_stdout_stderr():
             snapshot_download(repo_id = repo_url, repo_type = "dataset", local_dir = local_dir, use_auth_token = access_token)
         # Extract the images.tar.gz
-        extract_to_dir = BASE_DIR + '/healthcare/dataset/validator'
+        extract_to_dir = BASE_DIR + '/healthtensor/dataset/validator'
         tar_file = "images.tar.gz"
         with tarfile.open(os.path.join(extract_to_dir, tar_file), 'r:gz') as tar:
             tar.extractall(path=extract_to_dir)

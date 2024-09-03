@@ -18,11 +18,11 @@
 
 import bittensor as bt
 
-from healthcare.protocol import Request
-from healthcare.validator.reward import get_rewards
-from healthcare.utils.uids import get_random_uids
-from healthcare.validator.huggingface import download_models, remove_models
-from healthcare.utils.version import get_version
+from healthtensor.protocol import Request
+from healthtensor.validator.reward import get_rewards
+from healthtensor.utils.uids import get_random_uids
+from healthtensor.validator.huggingface import download_models, remove_models
+from healthtensor.utils.version import get_version
 
 async def forward(self):
     """

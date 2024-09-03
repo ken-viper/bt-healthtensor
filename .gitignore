@@ -161,9 +161,9 @@ cython_debug/
 
 testing/
 
-healthcare/dataset/miner
-healthcare/dataset/validator
-healthcare/models
+healthtensor/dataset/miner
+healthtensor/dataset/validator
+healthtensor/models
 
 # macOS
 .DS_Store

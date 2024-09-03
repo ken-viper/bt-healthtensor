@@ -106,12 +106,12 @@ def download_dataset() -> bool:
     
     # Download the dataset
     try:
-        local_dir = os.path.join(BASE_DIR, "healthcare/dataset/miner")
+        local_dir = os.path.join(BASE_DIR, "healthtensor/dataset/miner")
         with suppress_stdout_stderr():
             snapshot_download(repo_id = repo_url, repo_type = "dataset", local_dir = local_dir)
         bt.logging.info(f"♻️  Extracting ...")
         # Extract the images.tar.gz
-        extract_to_dir = BASE_DIR + '/healthcare/dataset/miner'
+        extract_to_dir = BASE_DIR + '/healthtensor/dataset/miner'
         # Get image files
         pattern = f"{extract_to_dir}/images*.tar.gz"
         tar_files = glob.glob(pattern)

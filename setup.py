@@ -54,7 +54,7 @@ with open(path.join(here, "README.md"), encoding="utf-8") as f:
 
 # loading version from setup.py
 with codecs.open(
-    os.path.join(here, "healthcare/__init__.py"), encoding="utf-8"
+    os.path.join(here, "healthtensor/__init__.py"), encoding="utf-8"
 ) as init_file:
     version_match = re.search(
         r"^__version__ = ['\"]([^'\"]*)['\"]", init_file.read(), re.M
@@ -62,16 +62,16 @@ with codecs.open(
     version_string = version_match.group(1)
 
 setup(
-    name="healthcare-subnet",
+    name="healthtensor",
     version=version_string,
-    description="A healthcare subnet", # Missing
+    description="A healthcare domain subnet", # Missing
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/bthealthcare/healthcare-subnet",
+    url="https://github.com/0xdeity/bt-healthtensor",
     author="demon",
     packages=find_packages(),
     include_package_data=True,
-    author_email="farhimkeser677@gmail.com",
+    author_email="deity916@gmail.com",
     license="MIT",
     python_requires=">=3.8",
     install_requires=requirements,

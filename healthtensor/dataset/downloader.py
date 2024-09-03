@@ -6,7 +6,7 @@ import os
 
 import bittensor as bt
 from constants import BASE_DIR
-from healthcare.dataset.dataset import download_dataset
+from healthtensor.dataset.dataset import download_dataset
 
 bt.logging.info(f"⏬ Downloading ...")
 download_status = download_dataset()

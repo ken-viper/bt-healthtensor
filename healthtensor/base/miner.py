@@ -24,8 +24,8 @@ import traceback
 
 import bittensor as bt
 
-from healthcare.base.neuron import BaseNeuron
-from healthcare.miner.model import ModelTrainer
+from healthtensor.base.neuron import BaseNeuron
+from healthtensor.miner.model import ModelTrainer
 
 
 class BaseMinerNeuron(BaseNeuron):

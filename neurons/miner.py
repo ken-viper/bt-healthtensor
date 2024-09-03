@@ -23,11 +23,11 @@ import random
 import string
 import bittensor as bt
 
-# Healthcare Miner:
-import healthcare
+# Healthtensor Miner:
+import healthtensor
 
 # import base miner class which takes care of most of the boilerplate
-from healthcare.base.miner import BaseMinerNeuron
+from healthtensor.base.miner import BaseMinerNeuron
 
 from huggingface_hub import HfApi, Repository
 from constants import BASE_DIR
@@ -60,17 +60,17 @@ class Miner(BaseMinerNeuron):
                 f.write(f"\nREPO_ID={repo_id}\n")
 
     async def forward(
-        self, synapse: healthcare.protocol.Request
-    ) -> healthcare.protocol.Request:
+        self, synapse: healthtensor.protocol.Request
+    ) -> healthtensor.protocol.Request:
         """
         Processes the incoming 'Request' synapse by performing a predefined operation on the input data.
         This method should be replaced with actual logic relevant to the miner's purpose.
 
         Args:
-            synapse (healthcare.protocol.Request): The synapse object containing the 'input_image' data.
+            synapse (healthtensor.protocol.Request): The synapse object containing the 'input_image' data.
 
         Returns:
-            healthcare.protocol.Request: The synapse object with the 'output_text' field set to twice the 'input_image' value.
+            healthtensor.protocol.Request: The synapse object with the 'output_text' field set to twice the 'input_image' value.
 
         The 'forward' function is a placeholder and should be overridden with logic that is appropriate for
         the miner's intended operation. This method demonstrates a basic transformation of input data.
@@ -78,7 +78,7 @@ class Miner(BaseMinerNeuron):
         return synapse
 
     async def blacklist(
-        self, synapse: healthcare.protocol.Request
+        self, synapse: healthtensor.protocol.Request
     ) -> typing.Tuple[bool, str]:
         """
         Determines whether an incoming request should be blacklisted and thus ignored. Your implementation should
@@ -89,7 +89,7 @@ class Miner(BaseMinerNeuron):
         requests before they are deserialized to avoid wasting resources on requests that will be ignored.
 
         Args:
-            synapse (healthcare.protocol.Request): A synapse object constructed from the headers of the incoming request.
+            synapse (healthtensor.protocol.Request): A synapse object constructed from the headers of the incoming request.
 
         Returns:
             Tuple[bool, str]: A tuple containing a boolean indicating whether the synapse's hotkey is blacklisted,
@@ -131,7 +131,7 @@ class Miner(BaseMinerNeuron):
 
         return False, "Hotkey recognized!"
 
-    async def priority(self, synapse: healthcare.protocol.Request) -> float:
+    async def priority(self, synapse: healthtensor.protocol.Request) -> float:
         """
         The priority function determines the order in which requests are handled. More valuable or higher-priority
         requests are processed before others. You should design your own priority mechanism with care.
@@ -139,7 +139,7 @@ class Miner(BaseMinerNeuron):
         This implementation assigns priority to incoming requests based on the calling entity's stake in the metagraph.
 
         Args:
-            synapse (healthcare.protocol.Request): The synapse object that contains metadata about the incoming request.
+            synapse (healthtensor.protocol.Request): The synapse object that contains metadata about the incoming request.
 
         Returns:
             float: A priority score derived from the stake of the calling entity.

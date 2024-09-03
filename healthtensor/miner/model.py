@@ -34,8 +34,8 @@ from tensorflow.keras.callbacks import EarlyStopping
 from huggingface_hub import HfApi, upload_file, HfFolder, update_repo_visibility
 
 import bittensor as bt
-from healthcare.dataset.dataset import load_dataset, load_and_preprocess_image
-from healthcare.utils.chain import Chain
+from healthtensor.dataset.dataset import load_dataset, load_and_preprocess_image
+from healthtensor.utils.chain import Chain
 from constants import BASE_DIR, ALL_LABELS
 from dotenv import load_dotenv
 load_dotenv()
@@ -136,7 +136,7 @@ class ModelTrainer:
                 batch_labels = labels[offset:offset+batch_size]
                 current_batch_size = 0
                 for img_path in image_paths[offset:offset+batch_size]:
-                    img = load_and_preprocess_image(os.path.join(BASE_DIR, 'healthcare/dataset/miner/images', img_path))
+                    img = load_and_preprocess_image(os.path.join(BASE_DIR, 'healthtensor/dataset/miner/images', img_path))
                     if isinstance(img, str):
                         continue
                     batch_images.append(img)
@@ -145,8 +145,8 @@ class ModelTrainer:
                     yield np.array(batch_images), np.array(batch_labels)
 
     def load_dataframe(self):
-        csv_path = os.path.join(BASE_DIR, 'healthcare/dataset/miner/Data_Entry.csv')
-        image_dir = os.path.join(BASE_DIR, 'healthcare/dataset/miner/images')
+        csv_path = os.path.join(BASE_DIR, 'healthtensor/dataset/miner/Data_Entry.csv')
+        image_dir = os.path.join(BASE_DIR, 'healthtensor/dataset/miner/images')
         image_list, binary_output, dataframe = load_dataset(csv_path, image_dir)
                 
         if not binary_output:
@@ -161,7 +161,7 @@ class ModelTrainer:
         return train_gen, dataframe, num_classes
 
     def get_model(self, num_classes):
-        model_file_path = os.path.join(BASE_DIR, 'healthcare/models', self.model_type)
+        model_file_path = os.path.join(BASE_DIR, 'healthtensor/models', self.model_type)
         
         # Check if model exists
         if not self.config.restart and os.path.exists(model_file_path):
@@ -245,7 +245,7 @@ class ModelTrainer:
             bt.logging.error(f"❌ Define ACCESS_TOKEN in .env file.")
             return
 
-        model_directory = os.path.join(BASE_DIR, 'healthcare/models', self.model_type)
+        model_directory = os.path.join(BASE_DIR, 'healthtensor/models', self.model_type)
         chain = Chain(self.config.netuid, self.neuron.subtensor, self.neuron.wallet)
 
         upload_callback = UploadModelCallback(

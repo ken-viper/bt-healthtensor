@@ -1,7 +1,7 @@
 import os
 import codecs
 import re
-import healthcare
+import healthtensor
 import bittensor as bt
 from constants import BASE_DIR
 
@@ -10,7 +10,7 @@ def get_version() -> str:
     Retrieves the version.
 
     """
-    with codecs.open(os.path.join(BASE_DIR, 'healthcare/__init__.py'), encoding='utf-8') as init_file:
+    with codecs.open(os.path.join(BASE_DIR, 'healthtensor/__init__.py'), encoding='utf-8') as init_file:
         version_match = re.search(r"^__version__ = ['\"]([^'\"]*)['\"]", init_file.read(), re.M)
         version = version_match.group(1)
         return version

@@ -29,7 +29,7 @@ import requests
 import bittensor as bt
 from typing import List
 from tensorflow.keras.models import load_model
-from healthcare.dataset.dataset import load_dataset, load_and_preprocess_image
+from healthtensor.dataset.dataset import load_dataset, load_and_preprocess_image
 from constants import BASE_DIR
 
 
@@ -60,8 +60,8 @@ def get_loss(
     """
     try:
         # Load dataset
-        csv_path = os.path.join(BASE_DIR, 'healthcare/dataset/validator/Data_Entry.csv')
-        image_dir = os.path.join(BASE_DIR, 'healthcare/dataset/validator/images')
+        csv_path = os.path.join(BASE_DIR, 'healthtensor/dataset/validator/Data_Entry.csv')
+        image_dir = os.path.join(BASE_DIR, 'healthtensor/dataset/validator/images')
         image_paths, binary_output, dataframe = load_dataset(csv_path, image_dir)
 
         # Generate x_input and y_output

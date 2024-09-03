@@ -22,12 +22,12 @@ import time
 # Bittensor
 import bittensor as bt
 
-# Healthcare Validator:
-import healthcare
-from healthcare.validator import forward
+# Healthtensor Validator:
+import healthtensor
+from healthtensor.validator import forward
 
 # import base validator class which takes care of most of the boilerplate
-from healthcare.base.validator import BaseValidatorNeuron
+from healthtensor.base.validator import BaseValidatorNeuron
 
 
 class Validator(BaseValidatorNeuron):
