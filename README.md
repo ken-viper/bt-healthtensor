@@ -2,6 +2,8 @@
 
 # HealthTensor
 
+</div>
+
 ## Introduction
 
 A Revolutionary Healthcare Domain Subnet on the Bittensor Network - HealthTensor
