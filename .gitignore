@@ -164,3 +164,6 @@ testing/
 healthcare/dataset/miner
 healthcare/dataset/validator
 healthcare/models
+
+# macOS
+.DS_Store
